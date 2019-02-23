@@ -1,0 +1,72 @@
+body { background:url(ciudad.jpg);
+	   width:1000px;
+	   display: inline-block;
+
+
+
+	    }
+
+div{ font-family: Verdana;
+	 margin: 0px 50px 0px 250px;
+
+
+ }
+
+
+.Menu  {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #FDFCD8;
+  color: white;
+  position: fixed;
+}
+
+.Menu li a {
+  display: block;
+  color: #000;
+  font-family: Verdana;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.Menu li a:hover {
+  background-color: black;
+  color: #FDFCD8;
+}
+
+.Menu li {
+  display: block;
+
+}
+
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 900px;
+  background-color: pink;
+  color: white;
+  position: fixed;
+}
+
+li a {
+  display: block;
+  color: #000;
+  font-family: Verdana;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: white;
+  color: pink;
+}
+
+li {
+  display: inline-block;
+
+}
