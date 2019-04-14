@@ -62,7 +62,7 @@ public class AdminLogin extends HttpServlet {
                 out.println("<h1>");
                 out.println("Incorrect password!:C");
                 out.println("</h1>");
-                out.println("<a href = login.html>");
+                out.println("<a href = loginAdmin.html>");
                 out.println("Try again");
                 out.println("</a>");
                 out.println("</body>");
