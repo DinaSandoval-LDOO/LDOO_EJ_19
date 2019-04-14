@@ -61,7 +61,7 @@ public class NormalLogin extends HttpServlet {
                 out.println("<h1>");
                 out.println("Incorrect password!:C");
                 out.println("</h1>");
-                out.println("<a href = login.html>");
+                out.println("<a href = loginNormal.html>");
                 out.println("Try again");
                 out.println("</a>");
                 out.println("</body>");
