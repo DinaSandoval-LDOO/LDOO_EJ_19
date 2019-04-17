@@ -4,7 +4,8 @@ import java.sql.*;
 
 public class DBConnection {
 
-    boolean login;    
+    boolean login;   
+    boolean regist;
     Connection conectar = null;
     Statement stmt = null;
     String userdb;
@@ -16,19 +17,21 @@ public class DBConnection {
 
     }
 
-    public Statement conexion() {
+    public boolean conexion() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+             Class.forName("com.mysql.jdbc.Driver");
             conectar = DriverManager.getConnection("jdbc:mysql://localhost/practica8", "root", "");
-            stmt = conectar.createStatement();
-            return stmt;
+            stmt = conectar.createStatement();  
+                 
+         
+           PreparedStatement prepared =conectar.prepareStatement("INSERT INTO USUARIOS VALUES('"+ userdb +"','"+ passworddb +"')");
+           prepared.executeUpdate();
 
-//            String sql = "INSERT INTO usuarios "
-//                    + "VALUES ('user2', 'password2')";
-//            stmt.executeUpdate(sql);
+           regist = true;
 
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
+            regist = false;
         } finally {
        
             try {
@@ -36,26 +39,24 @@ public class DBConnection {
                     conectar.close();
                 }
             } catch (SQLException se) {
-            }// do nothing
+            }
             try {
                 if (conectar != null) {
                     conectar.close();
                 }
             } catch (SQLException se) {
                 se.printStackTrace();
-            }//end finally try
-
-            return stmt;
-
-        }
+            }
+         }
+         return regist;
     }
     
     public boolean verificar(){
       try{
           
-        conexion();
-        Statement statement = conexion();
-    
+        Class.forName("com.mysql.jdbc.Driver");
+        conectar = DriverManager.getConnection("jdbc:mysql://localhost/practica8", "root", "");
+        stmt = conectar.createStatement();  
         
         String sql = "SELECT user, password FROM usuarios";
         
