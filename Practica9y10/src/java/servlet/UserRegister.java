@@ -9,34 +9,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-
 public class UserRegister extends HttpServlet {
 
-  
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-       
-    }
-
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        String usertype = request.getParameter("usertype");
-        
+        String usertype = request.getParameter("suscribertype");
+        String adminequals = "admin";
+        String normalequals = "normal";
+        String guestequals = "guest";
         
         Factory user = Factory.getInstance();
-        if(usertype.equals("admin")){
-        
+               
+        if("admin".equals(usertype)){
         String userAdmin = request.getParameter("username");
         String userId = request.getParameter("userid");
-        User admin = user.creatUser(usertype, username, password, email, userAdmin, userId, null, null, null, null, null, null);
+        User admin = user.creatUser(usertype);
+        admin = new Administration(username, password, email, usertype, userAdmin, userId);
         admin.addUsers();
         PrintWriter out = response.getWriter();
          
@@ -52,19 +44,21 @@ public class UserRegister extends HttpServlet {
          out.println("<h1>");
          out.println("You are in!C:");
          out.println("</h1>");
-         out.println("<a href = login.html>");
+         out.println("<a href = loginAdmin.html>");
          out.println("Sign in");
          out.println("</a>");
          out.println("</body>");
          out.println("</html>");
-    }
-        if(usertype.equals("normal")){
+        }
+        
+        if("normal".equals(usertype)){
         
         String userNormal = request.getParameter("username");
         String name = request.getParameter("name");
         String subscribeType = request.getParameter("subscribetype");
         String address = request.getParameter("address");
-        User normal = user.creatUser(usertype, username, password, email, null, null, userNormal, name, subscribeType, address, null, null);
+        User normal = user.creatUser(usertype);
+        normal = new Normal(username, password, email, usertype, userNormal, name, subscribeType, address);
         normal.addUsers();
         PrintWriter out = response.getWriter();
          
@@ -80,7 +74,7 @@ public class UserRegister extends HttpServlet {
          out.println("<h1>");
          out.println("You are in!C:");
          out.println("</h1>");
-         out.println("<a href = login.html>");
+         out.println("<a href = loginNormal.html>");
          out.println("Sign in");
          out.println("</a>");
          out.println("</body>");
@@ -88,12 +82,13 @@ public class UserRegister extends HttpServlet {
         
         }
         
-        if (usertype.equals("guest")){
+        if ("guest".equals(usertype)){
         
         String userGuest = request.getParameter("username");
         String name = request.getParameter("name");
         String subscribeDate = request.getParameter("subscribedate");
-        User guest = user.creatUser(usertype, username, password, email, null, null, null, name, null, null, subscribeDate, userGuest);
+        User guest = user.creatUser(usertype);
+        guest = new Guest(username, password, email, usertype, userGuest, name, subscribeDate);
         guest.addUsers();
         PrintWriter out = response.getWriter();
          
@@ -109,19 +104,16 @@ public class UserRegister extends HttpServlet {
          out.println("<h1>");
          out.println("You are in!C:");
          out.println("</h1>");
-         out.println("<a href = login.html>");
+         out.println("<a href = loginGuest.html>");
          out.println("Sign in");
          out.println("</a>");
          out.println("</body>");
          out.println("</html>");   
         
         }
-        
+    }
 
-   }
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+    
+    
 
 }

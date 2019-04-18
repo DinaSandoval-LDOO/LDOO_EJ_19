@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Guest implements User{
-  
+    
     private String username;
     private String password;
     private String email;
@@ -22,6 +22,8 @@ public class Guest implements User{
     boolean login;  
     boolean regist;
     Connection conectar = null;
+    
+    public Guest(){}
     
     public Guest(String username, String password){
         this.username = username;
@@ -49,7 +51,7 @@ public class Guest implements User{
             Statement stmt = conectar.createStatement();  
                  
          
-           PreparedStatement prepared =conectar.prepareStatement("INSERT INTO USER VALUES('"+ username +"','"+password +"', '"+email +"', '"+usertype +"')");
+           PreparedStatement prepared =conectar.prepareStatement("INSERT INTO user VALUES('"+ username +"','"+password +"', '"+email +"', '"+usertype +"')");
            prepared.executeUpdate();
 
            regist = true;
@@ -69,7 +71,7 @@ public class Guest implements User{
             Statement stmt = conectar.createStatement();  
                  
          
-           PreparedStatement prepared =conectar.prepareStatement("INSERT INTO GUEST VALUES('"+ userGuest +"','"+name +"', '"+subscribeDate +"')");
+           PreparedStatement prepared =conectar.prepareStatement("INSERT INTO guest VALUES('"+ userGuest +"','"+name +"', '"+subscribeDate +"')");
            prepared.executeUpdate();
 
            regist = true;
@@ -122,6 +124,5 @@ public class Guest implements User{
     return login;
     
     }
-  
-
+    
 }

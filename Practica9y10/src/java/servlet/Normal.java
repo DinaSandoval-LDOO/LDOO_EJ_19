@@ -10,8 +10,8 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Normal implements User{
-
+public class Normal implements User {
+    
     private String username;
     private String password;
     private String email;
@@ -23,6 +23,8 @@ public class Normal implements User{
     boolean login;  
     boolean regist;
     Connection conectar = null;
+    
+    public Normal(){}
     
     public Normal(String username, String password){
         this.username = username;
@@ -50,7 +52,7 @@ public class Normal implements User{
             Statement stmt = conectar.createStatement();  
                  
          
-           PreparedStatement prepared =conectar.prepareStatement("INSERT INTO USER VALUES('"+ username +"','"+password +"', '"+email +"', '"+usertype +"')");
+           PreparedStatement prepared =conectar.prepareStatement("INSERT INTO user VALUES('"+ username +"','"+password +"', '"+email +"', '"+usertype +"')");
            prepared.executeUpdate();
 
            regist = true;
@@ -70,7 +72,7 @@ public class Normal implements User{
             Statement stmt = conectar.createStatement();  
                  
          
-           PreparedStatement prepared =conectar.prepareStatement("INSERT INTO NORMAL VALUES('"+ userNormal +"','"+name +"', '"+subscribeType +"', '"+address +"')");
+           PreparedStatement prepared =conectar.prepareStatement("INSERT INTO normal VALUES('"+ userNormal +"','"+name +"', '"+subscribeType +"', '"+address +"')");
            prepared.executeUpdate();
 
            regist = true;
@@ -123,7 +125,4 @@ public class Normal implements User{
     return login;
     
     }
-  
-    
-        
 }

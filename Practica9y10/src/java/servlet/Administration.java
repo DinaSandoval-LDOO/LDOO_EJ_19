@@ -22,6 +22,9 @@ public class Administration implements User{
     boolean regist;
     Connection conectar = null;
     
+    public Administration(){
+    }
+    
     public Administration(String username, String password){
         this.username = username;
         this.password = password;
@@ -45,9 +48,10 @@ public class Administration implements User{
             Class.forName("com.mysql.jdbc.Driver");
             conectar = DriverManager.getConnection("jdbc:mysql://localhost/practica8", "root", "");
             Statement stmt = conectar.createStatement();  
-                 
+            
+                          
          
-           PreparedStatement prepared =conectar.prepareStatement("INSERT INTO USER VALUES('"+ username +"','"+password +"', '"+email +"', '"+usertype +"')");
+           PreparedStatement prepared =conectar.prepareStatement("INSERT INTO user VALUES('"+ username +"','"+password +"', '"+email +"', '"+usertype +"')");
            prepared.executeUpdate();
 
            regist = true;
@@ -67,7 +71,7 @@ public class Administration implements User{
             Statement stmt = conectar.createStatement();  
                  
          
-           PreparedStatement prepared =conectar.prepareStatement("INSERT INTO ADMIN VALUES('"+ userAdmin +"','"+userId +"')");
+           PreparedStatement prepared =conectar.prepareStatement("INSERT INTO admin VALUES('"+ userAdmin +"','"+userId +"')");
            prepared.executeUpdate();
 
            regist = true;
@@ -118,5 +122,4 @@ public class Administration implements User{
         
        return login;
     }
-      
 }

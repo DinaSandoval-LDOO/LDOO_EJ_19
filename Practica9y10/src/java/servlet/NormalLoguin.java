@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class GuestLogin extends HttpServlet {
-   
+public class NormalLoguin extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -18,10 +18,10 @@ public class GuestLogin extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
-       Guest guest = new Guest(username, password);
+       Normal normal = new Normal(username, password);
       
        
-       if(guest.checkUsersList()){
+       if(normal.checkUsersList()){
        
            PrintWriter out = response.getWriter();
                 out.println("<!DOCTYPE html>");
@@ -31,7 +31,7 @@ public class GuestLogin extends HttpServlet {
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<h1>");
-                out.println("Wellcome Guest!C:");
+                out.println("Wellcome Normal!C:");
                 out.println("</h1>");
                 out.println("</body>");
                 out.println("</html>");
@@ -51,7 +51,7 @@ public class GuestLogin extends HttpServlet {
                 out.println("<h1>");
                 out.println("Incorrect password!:C");
                 out.println("</h1>");
-                out.println("<a href = loginGuest.html>");
+                out.println("<a href = loginNormal.html>");
                 out.println("Try again");
                 out.println("</a>");
                 out.println("</body>");

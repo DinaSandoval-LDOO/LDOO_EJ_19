@@ -1,5 +1,4 @@
 
-
 package servlet;
 
 
@@ -15,23 +14,23 @@ public class Factory {
     }
     
     
-    public User creatUser(String usertype, String username, String password, String email, String userAdmin, String userId, String userNormal, String name, String subscribeType, String address, String subscribeDate, String userGuest){
+    public User creatUser(String usertype){
    
-       if (usertype.equals("admin")){
+       if ("admin".equals(usertype)){
        
-       return new Administration(username, password, email, usertype, userAdmin, userId);
+       return new Administration();
        
                                     }
        
        if (usertype.equals("normal")){
        
-       return new Normal(username, password, email,  usertype, userNormal,  name, subscribeType, address);
+       return new Normal();
        
                                     }
        
        if (usertype.equals("guest")){
        
-       return new Guest(username, password, email, usertype, userGuest, name, subscribeDate);
+       return new Guest();
        
                                     }
        

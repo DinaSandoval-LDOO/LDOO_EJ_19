@@ -5,40 +5,32 @@
         <servlet-class>servlet.UserRegister</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UserLogin</servlet-name>
-        <servlet-class>servlet.UserLogin</servlet-class>
+        <servlet-name>AdminLogin</servlet-name>
+        <servlet-class>servlet.AdminLogin</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>NormalLogin</servlet-name>
-        <servlet-class>servlet.NormalLogin</servlet-class>
+        <servlet-name>NormalLoguin</servlet-name>
+        <servlet-class>servlet.NormalLoguin</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>GuestLogin</servlet-name>
         <servlet-class>servlet.GuestLogin</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AdminLogin</servlet-name>
-        <servlet-class>servlet.AdminLogin</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserRegister</servlet-name>
         <url-pattern>/UserRegister</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UserLogin</servlet-name>
-        <url-pattern>/UserLogin</url-pattern>
+        <servlet-name>AdminLogin</servlet-name>
+        <url-pattern>/AdminLogin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>NormalLogin</servlet-name>
-        <url-pattern>/NormalLogin</url-pattern>
+        <servlet-name>NormalLoguin</servlet-name>
+        <url-pattern>/NormalLoguin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GuestLogin</servlet-name>
         <url-pattern>/GuestLogin</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AdminLogin</servlet-name>
-        <url-pattern>/AdminLogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
