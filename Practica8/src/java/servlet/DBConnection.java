@@ -4,10 +4,10 @@ import java.sql.*;
 
 public class DBConnection {
 
-    boolean login;   
+    boolean login; 
     boolean regist;
-    Connection conectar = null;
     Statement stmt = null;
+    Connection conectar = null;
     String userdb;
     String passworddb;
 
@@ -19,7 +19,7 @@ public class DBConnection {
 
     public boolean conexion() {
         try {
-             Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             conectar = DriverManager.getConnection("jdbc:mysql://localhost/practica8", "root", "");
             stmt = conectar.createStatement();  
                  
@@ -45,19 +45,19 @@ public class DBConnection {
                     conectar.close();
                 }
             } catch (SQLException se) {
-                se.printStackTrace();
+                
             }
-         }
-         return regist;
+
+          }
+             return regist;
     }
     
-    public boolean verificar(){
+    public boolean verificar() throws ClassNotFoundException{
       try{
-          
         Class.forName("com.mysql.jdbc.Driver");
         conectar = DriverManager.getConnection("jdbc:mysql://localhost/practica8", "root", "");
         stmt = conectar.createStatement();  
-        
+               
         String sql = "SELECT user, password FROM usuarios";
         
         ResultSet rs = stmt.executeQuery(sql);
